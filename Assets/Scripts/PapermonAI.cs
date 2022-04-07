@@ -7,29 +7,36 @@ public class PapermonAI : MonoBehaviour
 
     public PapermonAIState state = PapermonAIState.IDLE;
     public GameObject enemy;
+    public AttackBase attackMove;
 
     private void Update()
     {
         switch (state)
         {
             case PapermonAIState.IDLE: IdleMove(); break;
-            case PapermonAIState.PREPARING: PreparingMove(); break;
             case PapermonAIState.COMBATING: CombatingMove(); break;
         }
     }
 
     private void IdleMove()
     {
-
+        if (enemy)
+        {
+            state = PapermonAIState.COMBATING;
+            return;
+        }
     }
 
-    private void PreparingMove()
-    {
-
-    }
 
     private void CombatingMove()
     {
+        if (!enemy)
+        {
+            state = PapermonAIState.IDLE;
+            return;
+        }
+        if (!attackMove) attackMove = GetComponent<AttackBase>();
+        attackMove?.Attack(enemy);
 
     }
 }
@@ -37,6 +44,5 @@ public class PapermonAI : MonoBehaviour
 public enum PapermonAIState
 {
     IDLE,
-    PREPARING,
     COMBATING
 }

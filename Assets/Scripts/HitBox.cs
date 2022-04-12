@@ -34,8 +34,9 @@ public class HitBox : MonoBehaviour
         if ((canDamage.value & layer) != 0)
         {
             if (!string.IsNullOrEmpty(damageTag) && !other.CompareTag(damageTag)) return;
-            if (TryGetComponent<Health>(out var health))
+            if (other.TryGetComponent<Health>(out var health))
             {
+                Debug.Log(3);
                 health.TakeDamage(damage);
             }
         }

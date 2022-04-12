@@ -36,7 +36,6 @@ public class HitBox : MonoBehaviour
             if (!string.IsNullOrEmpty(damageTag) && !other.CompareTag(damageTag)) return;
             if (other.TryGetComponent<Health>(out var health))
             {
-                Debug.Log(3);
                 health.TakeDamage(damage);
             }
         }

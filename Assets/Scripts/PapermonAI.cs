@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PapermonAI : MonoBehaviour
 {
-
+    public int weakHealthThreshold;
+    [Range(0f, 1f)]
+    public float defaultCaptureRate = .1f;
     public PapermonAIState state = PapermonAIState.IDLE;
     public GameObject enemy;
     public AttackBase attackMove;
@@ -16,6 +18,12 @@ public class PapermonAI : MonoBehaviour
             case PapermonAIState.IDLE: IdleMove(); break;
             case PapermonAIState.COMBATING: CombatingMove(); break;
         }
+    }
+
+    public void TriggerCombat(GameObject target)
+    {
+        state = PapermonAIState.COMBATING;
+        enemy = target;
     }
 
     private void IdleMove()

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class RockBallController : MonoBehaviour
+public class BulletController : MonoBehaviour
 {
-    public Vector3 dir;
     public Rigidbody ball;
     public float speed;
     public float maxDuration = 5.0f;
@@ -21,10 +20,10 @@ public class RockBallController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        // transform.LookAt(transform.position + dir);
-        ball.MovePosition(ball.position + speed * Time.fixedDeltaTime * dir);
+        // ball.MovePosition(Vector3.MoveTowards(ball.position, target, speed * Time.fixedDeltaTime));
+        ball.MovePosition(ball.position + transform.forward * speed * Time.fixedDeltaTime);
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         CheckDestroy(other);

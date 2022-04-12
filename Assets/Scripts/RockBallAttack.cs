@@ -19,9 +19,9 @@ public class RockBallAttack : AttackBase
         var attackBall = Instantiate(rockBall);
         Physics.IgnoreCollision(attackBall.GetComponent<Collider>(), GetComponent<Collider>());
         var controller = rockBall.GetComponent<RockBallController>();
-        controller.target = target.transform.position;
         if (!firePoint) firePoint = transform;
         attackBall.transform.position = firePoint.position;
         attackBall.transform.LookAt(target.transform);
+        controller.dir = (target.transform.position - attackBall.transform.position).normalized;
     }
 }

@@ -7,6 +7,9 @@ public class Player2DCon : MonoBehaviour
 
     public static bool isInVR;
 
+    public GameObject paperball;
+    public float throwForce = 5f;
+
     public GameObject cameraRig;
     public Transform sofaPos;
     public float speed;
@@ -26,8 +29,7 @@ public class Player2DCon : MonoBehaviour
     public OVRInput.Button jumpButton;
     public OVRInput.Button switchButton;
 
-    public OVRInput.Controller lHandCon;
-    public OVRInput.Controller rHandCon;
+    public OVRInput.Axis1D throwButton;
 
     public bool isOnGround;
 
@@ -37,6 +39,8 @@ public class Player2DCon : MonoBehaviour
     public bool jumpRequested;
     public bool switched;
     public bool switchRequested;
+    public bool throwed;
+    public bool throwRequested;
     public float horizontalInput;
 
     // Start is called before the first frame update
@@ -44,6 +48,10 @@ public class Player2DCon : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
+        if (paperball)
+        {
+            paperball.GetComponent<Rigidbody>().isKinematic = true;
+        }
     }
 
     private void FixedUpdate()
@@ -82,15 +90,31 @@ public class Player2DCon : MonoBehaviour
         switchRequested = switchPressed && !switched;
         switched = switchPressed;
 
+        var throwPressed = right.Get(throwButton);
+        throwRequested = throwPressed && !throwed;
+        throwed = throwPressed;
+
         horizontalInput = left.Get(movementAxis).x;
         // Debug.Log(horizontalInput);
 
         CheckSwitch();
+        CheckThrow();
     }
 
     void CheckSwitch()
     {
         if (switchRequested) SwitchState();
+    }
+
+    void CheckThrow()
+    {
+        if (!throwRequested || !isInVR || !paperball) return;
+
+        paperball.transform.parent = null;
+
+        var t = right.transform;
+
+        paperball.GetComponent<Paperball>().Throw(t.forward * throwForce);
     }
 
     void GroundCheck()

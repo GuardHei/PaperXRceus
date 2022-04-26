@@ -17,6 +17,11 @@ public class Hand : MonoBehaviour
 
     }
 
+    public bool Get(OVRInput.Axis1D axis, float threshold = .5f)
+    {
+        return OVRInput.Get(axis, controller) > threshold;
+    }
+
     public Vector2 Get(OVRInput.Axis2D axis)
     {
         return OVRInput.Get(axis, controller);

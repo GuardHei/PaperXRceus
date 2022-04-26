@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Player2DCon : MonoBehaviour
 {
-    public GameObject player;
+
+    public static bool isInVR;
+
+    public GameObject cameraRig;
+    public Transform sofaPos;
     public float speed;
     public float jumpPower;
     public float gravity;
@@ -31,17 +35,22 @@ public class Player2DCon : MonoBehaviour
 
     public bool jumped;
     public bool jumpRequested;
+    public bool switched;
+    public bool switchRequested;
     public float horizontalInput;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = player.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
 
     }
 
     private void FixedUpdate()
     {
+
+        if (isInVR) return;
+
         GroundCheck();
 
         var finalVel = new Vector2(.0f, .0f);
@@ -67,9 +76,21 @@ public class Player2DCon : MonoBehaviour
         var jumpPressed = right.Get(jumpButton);
         jumpRequested = jumpPressed && !jumped;
         jumped = jumpPressed;
-        Debug.Log(jumpRequested);
+        // Debug.Log(jumpRequested);
+
+        var switchPressed = right.Get(switchButton);
+        switchRequested = switchPressed && !switched;
+        switched = switchPressed;
+
         horizontalInput = left.Get(movementAxis).x;
         // Debug.Log(horizontalInput);
+
+        CheckSwitch();
+    }
+
+    void CheckSwitch()
+    {
+        if (switchRequested) SwitchState();
     }
 
     void GroundCheck()
@@ -82,10 +103,32 @@ public class Player2DCon : MonoBehaviour
     void SwitchState()
     {
         if (!isOnGround) return;
+
+        rb.velocity = Vector3.zero;
+
+        isInVR = !isInVR;
+        if (isInVR)
+        {
+            cameraRig.transform.position = transform.position;
+            foreach (var renderer in GetComponentsInChildren<Renderer>())
+            {
+                renderer.enabled = false;
+            }
+        }
+        else
+        {
+            cameraRig.transform.position = sofaPos.position;
+            foreach (var renderer in GetComponentsInChildren<Renderer>())
+            {
+                renderer.enabled = true;
+            }
+        }
+
+        StateSwitch();
     }
 
     public static void StateSwitch()
     {
-
+        
     }
 }

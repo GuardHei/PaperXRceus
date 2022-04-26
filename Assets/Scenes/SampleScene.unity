@@ -585,7 +585,13 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 679205209}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &679205211
+--- !u!1 &679205211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 109308, guid: 126d619cf4daa52469682f85c1378b4a,
+    type: 3}
+  m_PrefabInstance: {fileID: 679205209}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &679205212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -594,28 +600,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 679205210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b54aced5fbdd56d4ebd00ee1fbd29f0c, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d6ea357adeb4d246a5b11142d5148d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 895460293}
-  speed: 10
-  jumpPower: 10
-  gravity: 0.01
-  groundCheckOffset: {x: 0, y: 0.05}
-  groundCheckLength: 1
-  canLandOn:
-    serializedVersion: 2
-    m_Bits: 1
-  deadZone: 0.005
-  movementAxis: 0
-  jumpButton: 1
-  switchButton: 0
-  lHandCon: 0
-  rHandCon: 2
-  isOnGround: 0
-  rb: {fileID: 0}
-  jumpRequested: 0
-  horizontalInput: 0
+  controller: 2
+--- !u!114 &679205213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679205211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6ea357adeb4d246a5b11142d5148d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: 1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,16 +1124,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54aced5fbdd56d4ebd00ee1fbd29f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 895460293}
   speed: 10
-  jumpPower: 10
-  gravity: 10
+  jumpPower: 200
+  gravity: 15
   groundCheckOffset: {x: 0, y: 0.05}
   groundCheckLength: 1
   canLandOn:
     serializedVersion: 2
     m_Bits: 1
   deadZone: 0.005
+  left: {fileID: 679205213}
+  right: {fileID: 679205212}
   movementAxis: 1
   jumpButton: 1
   switchButton: 2
@@ -1140,6 +1143,7 @@ MonoBehaviour:
   rHandCon: 64
   isOnGround: 0
   rb: {fileID: 895460294}
+  jumped: 0
   jumpRequested: 0
   horizontalInput: 0
 --- !u!1 &944848551

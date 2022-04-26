@@ -14,6 +14,9 @@ public class Player2DCon : MonoBehaviour
     public LayerMask canLandOn;
     public float deadZone = .005f;
 
+    public Hand left;
+    public Hand right;
+
     public OVRInput.Axis2D movementAxis;
 
     public OVRInput.Button jumpButton;
@@ -26,6 +29,7 @@ public class Player2DCon : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    public bool jumped;
     public bool jumpRequested;
     public float horizontalInput;
 
@@ -53,7 +57,6 @@ public class Player2DCon : MonoBehaviour
         } else {
             finalVel.y -= gravity;
         }
-        Debug.Log(finalVel.ToString("f3"));
         
         rb.velocity = finalVel;
     }
@@ -61,10 +64,12 @@ public class Player2DCon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        jumpRequested = OVRInput.GetDown(jumpButton, rHandCon);
+        var jumpPressed = right.Get(jumpButton);
+        jumpRequested = jumpPressed && !jumped;
+        jumped = jumpPressed;
         Debug.Log(jumpRequested);
-        horizontalInput = OVRInput.Get(movementAxis, lHandCon).x;
-        Debug.Log(horizontalInput);
+        horizontalInput = left.Get(movementAxis).x;
+        // Debug.Log(horizontalInput);
     }
 
     void GroundCheck()

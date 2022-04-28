@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class PapermonAI : MonoBehaviour
 {
@@ -38,6 +39,15 @@ public class PapermonAI : MonoBehaviour
         if (enemy)
         {
             state = PapermonAIState.COMBATING;
+
+            var lac = GetComponent<LookAtConstraint>();
+            lac.constraintActive = true;
+            lac.SetSource(0, new ConstraintSource
+            {
+                sourceTransform = enemy.transform,
+                weight = 1.0f
+            });
+
             return;
         }
 
@@ -62,8 +72,13 @@ public class PapermonAI : MonoBehaviour
         if (!enemy)
         {
             state = PapermonAIState.IDLE;
+
+            var lac = GetComponent<LookAtConstraint>();
+            lac.constraintActive = false;
+
             return;
         }
+
         if (!attackMove) attackMove = GetComponent<AttackBase>();
         attackMove?.Attack(enemy);
 

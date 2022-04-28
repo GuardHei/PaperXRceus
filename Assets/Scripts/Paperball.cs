@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Paperball : MonoBehaviour
 {
@@ -14,8 +15,12 @@ public class Paperball : MonoBehaviour
     public void Throw(Vector3 force)
     {
         if (thrown) return;
+
+        GetComponent<ParentConstraint>().constraintActive = false;
+
         thrown = true;
         rb.isKinematic = false;
+        GetComponent<Collider>().enabled = true;
         rb.AddForce(force);
     }
 
@@ -38,10 +43,12 @@ public class Paperball : MonoBehaviour
 
     public void Reset()
     {
-        Destroy(papermon);
+        if (papermon) Destroy(papermon);
         rb.isKinematic = true;
+        GetComponent<Collider>().enabled = false;
         thrown = false;
         spawned = false;
+        GetComponent<ParentConstraint>().constraintActive = true;
         gameObject.SetActive(true);
     }
 }

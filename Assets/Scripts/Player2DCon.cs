@@ -43,6 +43,8 @@ public class Player2DCon : MonoBehaviour
     public bool throwRequested;
     public float horizontalInput;
 
+    public int lastSwitchFrame = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -103,18 +105,29 @@ public class Player2DCon : MonoBehaviour
 
     void CheckSwitch()
     {
-        if (switchRequested) SwitchState();
+        if (!switchRequested) return;
+
+        var cur = Time.frameCount;
+
+        if (cur - lastSwitchFrame < 5) return;
+
+        lastSwitchFrame = cur;
+
+        SwitchState();
     }
 
     void CheckThrow()
     {
         if (!throwRequested || !isInVR || !paperball) return;
 
-        paperball.transform.parent = null;
+        // paperball.transform.parent = null;
 
         var t = right.transform;
 
-        paperball.GetComponent<Paperball>().Throw(t.forward * throwForce);
+        var pb = paperball.GetComponent<Paperball>();
+
+        if (pb.thrown) pb.Reset();
+        else pb.Throw(t.forward * throwForce);
     }
 
     void GroundCheck()
@@ -138,6 +151,8 @@ public class Player2DCon : MonoBehaviour
             {
                 renderer.enabled = false;
             }
+
+            paperball.GetComponent<Renderer>().enabled = true;
         }
         else
         {
@@ -146,12 +161,14 @@ public class Player2DCon : MonoBehaviour
             {
                 renderer.enabled = true;
             }
+
+            paperball.GetComponent<Renderer>().enabled = false;
         }
 
-        StateSwitch();
+        StateSwitch(isInVR);
     }
 
-    public static void StateSwitch()
+    public static void StateSwitch(bool isInVR)
     {
         
     }

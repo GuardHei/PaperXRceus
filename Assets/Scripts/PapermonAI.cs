@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class PapermonAI : MonoBehaviour
 {
+    [Range(0, 30f)]
+    public float detectionRange = 10f;
+    public string enemyTag;
+    public LayerMask enemyLayers;
+
     public int weakHealthThreshold;
     [Range(0f, 1f)]
     public float defaultCaptureRate = .1f;
     public PapermonAIState state = PapermonAIState.IDLE;
     public GameObject enemy;
     public AttackBase attackMove;
+
+    public Collider[] detectionResults = new Collider[10];
 
     private void Update()
     {
@@ -32,6 +39,20 @@ public class PapermonAI : MonoBehaviour
         {
             state = PapermonAIState.COMBATING;
             return;
+        }
+
+        var count = Physics.OverlapSphereNonAlloc(transform.position, detectionRange, detectionResults, enemyLayers);
+        for (int i = 0; i < count; i++)
+        {
+            var r = detectionResults[i];
+            if (string.IsNullOrEmpty(enemyTag) || r.CompareTag(enemyTag))
+            {
+                if (r.TryGetComponent<PapermonAI>(out var ai))
+                {
+                    enemy = r.gameObject;
+                    break;
+                }
+            }
         }
     }
 

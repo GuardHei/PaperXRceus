@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4235142831721965116}
   - component: {fileID: 8227712087873482723}
   m_Layer: 9
-  m_Name: RockBall
+  m_Name: EnemyBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 936fb5d74c0fd574fa86a91cfaba98bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dir: {x: 0.64351064, y: 0.005606472, z: 0.7654166}
+  dir: {x: -0.8934466, y: -0.0076676, z: -0.44910386}
   ball: {fileID: 0}
   speed: 10
   maxDuration: 6
@@ -144,8 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0183f3c87c9db6c4fb98b466dad8d994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
+  damage: 100
   canDamage:
     serializedVersion: 2
     m_Bits: 256
-  damageTag: EnemyPapermon
+  damageTag: AllyPapermon

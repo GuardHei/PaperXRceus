@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 0
+  maxHealth: 100
   isAlive: 0
   destroyOnDeath: 1
   takeDamageEvent:
@@ -335,11 +335,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e406202775a2f74ba05c69380137819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectionRange: 10
+  enemyTag: EnemyPapermon
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 256
   weakHealthThreshold: 0
   defaultCaptureRate: 0.1
   state: 0
   enemy: {fileID: 0}
   attackMove: {fileID: 4007189692977604126}
+  detectionResults:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &4007189692977604126
 MonoBehaviour:
   m_ObjectHideFlags: 0

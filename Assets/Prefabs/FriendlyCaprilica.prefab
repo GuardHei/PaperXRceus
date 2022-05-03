@@ -385,7 +385,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cc7db1e3f96604d9881f56c14ac9e4b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -432,7 +432,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4007189692767510358}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -515,6 +515,7 @@ GameObject:
   - component: {fileID: 4007189692977604126}
   - component: {fileID: 4007189692977604130}
   - component: {fileID: -5460615202620171026}
+  - component: {fileID: 4690054651497797292}
   m_Layer: 8
   m_Name: FriendlyCaprilica
   m_TagString: AllyPapermon
@@ -621,7 +622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minAttackInterval: 2
   lastAttackTime: -1
-  rockBall: {fileID: 7403508738929811440, guid: 43c18bbf94c2e594f91636f7042504f0,
+  rockBall: {fileID: 7403508738929811440, guid: cdbca0e90af1c4c31b7cd53711af9746,
     type: 3}
   firePoint: {fileID: 0}
 --- !u!136 &4007189692977604130
@@ -657,3 +658,16 @@ LookAtConstraint:
   m_Sources:
   - sourceTransform: {fileID: 0}
     weight: 1
+--- !u!114 &4690054651497797292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4007189692977604127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32cec899df4374b9cb4ebb39540bdc41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1

@@ -36,7 +36,12 @@ public class HitBox : MonoBehaviour
             if (!string.IsNullOrEmpty(damageTag) && !other.CompareTag(damageTag)) return;
             if (other.TryGetComponent<Health>(out var health))
             {
-                health.TakeDamage(damage);
+                var attackMultiplier = 1f;
+                if (other.TryGetComponent<Type>(out var defenderType) && TryGetComponent<Type>(out var attackType))
+                {
+                    attackMultiplier = Type.calculateMultiplier(attackType.type, defenderType.type);
+                }
+                health.TakeDamage((int) Mathf.Ceil(damage * attackMultiplier));
             }
         }
     }

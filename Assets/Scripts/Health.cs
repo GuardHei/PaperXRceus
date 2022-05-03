@@ -35,6 +35,7 @@ public class Health : MonoBehaviour
         if (hb)
         {
             hb.fillAmount = (float) currentHealth / (float) maxHealth;
+            Debug.Log("fill amount: " + hb.fillAmount);
         }
 
         takeDamageEvent?.Invoke();

@@ -83,20 +83,23 @@ public class Player2DCon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var jumpPressed = right.Get(jumpButton);
+        //The || value is used for keyboard controls
+        var jumpPressed = right.Get(jumpButton) || Input.GetButton("Jump");
         jumpRequested = jumpPressed && !jumped;
         jumped = jumpPressed;
         // Debug.Log(jumpRequested);
 
-        var switchPressed = right.Get(switchButton);
+        var switchPressed = right.Get(switchButton) || Input.GetButton("Fire2");
         switchRequested = switchPressed && !switched;
         switched = switchPressed;
 
-        var throwPressed = right.Get(throwButton);
+        var throwPressed = right.Get(throwButton) || Input.GetButton("Fire1");
         throwRequested = throwPressed && !throwed;
         throwed = throwPressed;
 
         horizontalInput = left.Get(movementAxis).x;
+        var keyboardHorizontalInput = Input.GetAxis("Horizontal");
+        horizontalInput = (Mathf.Abs(horizontalInput) > Mathf.Abs(keyboardHorizontalInput)) ? horizontalInput : keyboardHorizontalInput;
         // Debug.Log(horizontalInput);
 
         CheckSwitch();

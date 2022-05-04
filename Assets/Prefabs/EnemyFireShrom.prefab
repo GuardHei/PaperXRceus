@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 3465800026695664316}
   - component: {fileID: 3465800026695664315}
   m_Layer: 8
-  m_Name: EnemyShrom
+  m_Name: EnemyFireShrom
   m_TagString: EnemyPapermon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -366,7 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minAttackInterval: 2
   lastAttackTime: -1
-  rockBall: {fileID: 7403508738929811440, guid: 9baa934d091bae04ebbe4d5a51b40291,
+  rockBall: {fileID: 7403508738929811440, guid: 5f7c6b8e265eb40db9d961794becb1cd,
     type: 3}
   firePoint: {fileID: 0}
 --- !u!136 &3465800026695664316

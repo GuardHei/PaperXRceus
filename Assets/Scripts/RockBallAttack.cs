@@ -17,6 +17,7 @@ public class RockBallAttack : AttackBase
         if (!rockBall) return;
         lastAttackTime = Time.time;
         var attackBall = Instantiate(rockBall);
+        attackBall.GetComponent<HitBox>().damageTag = (tag.Equals("EnemyPapermon")) ? "AllyPapermon" : "EnemyPapermon";
         Physics.IgnoreCollision(attackBall.GetComponent<Collider>(), GetComponent<Collider>());
         var controller = rockBall.GetComponent<RockBallController>();
         if (!firePoint) firePoint = transform;

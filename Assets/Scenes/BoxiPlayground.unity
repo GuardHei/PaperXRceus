@@ -1779,7 +1779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paperball: {fileID: 1054278299}
-  throwForce: 500
+  throwForce: 600
   cameraRig: {fileID: 745369114}
   sofaPos: {fileID: 747415864}
   speed: 10

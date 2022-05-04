@@ -262,6 +262,7 @@ GameObject:
   - component: {fileID: 3465800026695664317}
   - component: {fileID: 3465800026695664316}
   - component: {fileID: 3465800026695664315}
+  - component: {fileID: 800526257303924777}
   m_Layer: 8
   m_Name: EnemyFireShrom
   m_TagString: EnemyPapermon
@@ -301,7 +302,7 @@ MonoBehaviour:
   maxHealth: 100
   isAlive: 1
   destroyOnDeath: 1
-  hb: {fileID: 0}
+  hb: {fileID: 3465800025661470969}
   takeDamageEvent:
     m_PersistentCalls:
       m_Calls:
@@ -402,6 +403,19 @@ LookAtConstraint:
   m_Sources:
   - sourceTransform: {fileID: 0}
     weight: 1
+--- !u!114 &800526257303924777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3465800026695664313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32cec899df4374b9cb4ebb39540bdc41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!1001 &3465800025646853753
 PrefabInstance:
   m_ObjectHideFlags: 0

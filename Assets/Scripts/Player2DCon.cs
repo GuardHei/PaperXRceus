@@ -86,7 +86,7 @@ public class Player2DCon : MonoBehaviour
         //The || value is used for keyboard controls
         var jumpPressed = right.Get(jumpButton) || Input.GetButton("Jump");
         jumpRequested = jumpPressed && !jumped;
-        jumped = jumpPressed;
+        //jumped = jumpPressed;
         // Debug.Log(jumpRequested);
 
         var switchPressed = right.Get(switchButton) || Input.GetButton("Fire2");

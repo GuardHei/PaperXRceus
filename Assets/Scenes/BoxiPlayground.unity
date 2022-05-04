@@ -1365,7 +1365,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 868345148}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -42.59999, y: -4.4000006, z: 14.5}
+  m_LocalPosition: {x: -42.59999, y: -4.64, z: 14.5}
   m_LocalScale: {x: 23.875162, y: 2.0959487, z: 32.3}
   m_Children:
   - {fileID: 1147114585}
@@ -1545,6 +1545,7 @@ GameObject:
   m_Component:
   - component: {fileID: 944848554}
   - component: {fileID: 944848553}
+  - component: {fileID: 944848552}
   m_Layer: 0
   m_Name: 2D Camera
   m_TagString: Untagged
@@ -1552,6 +1553,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &944848552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944848551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6855bbf7b67b454e8c62b00c6a253d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 895460293}
 --- !u!20 &944848553
 Camera:
   m_ObjectHideFlags: 0
@@ -1603,7 +1617,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944848551}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -316.8, y: 407.18, z: -52.4}
+  m_LocalPosition: {x: -286.83, y: 407.18, z: -52.4}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 1718717145}
